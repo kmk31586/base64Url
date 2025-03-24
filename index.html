@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title></title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        iframe {
+            border: none;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <iframe id="iframe" frameborder="0"></iframe>
+
+    <script>
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        function decodeBase64Url(base64Url) {
+            const decodedString = atob(base64Url);
+            return decodedString;
+        }
+
+        const base64Url = getUrlParameter('s');
+
+        if (base64Url) {
+            const decodedUrl = decodeBase64Url(base64Url);
+
+            const iframe = document.getElementById('iframe');
+            iframe.src = decodedUrl;
+        }
+    </script>
+</body>
+</html>
